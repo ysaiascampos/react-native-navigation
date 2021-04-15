@@ -4,6 +4,8 @@ import { StyleSheet, Text, View, Button } from 'react-native';
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 
+const Logo = () => <Text>LALALA</Text>;
+
 const HomeScreen = ({ navigation }) => {
   return (
     <View style={styles.container}>
@@ -18,7 +20,7 @@ const HomeScreen = ({ navigation }) => {
 }
 
 HomeScreen.navigationOptions = {
-  title: 'home',
+  headerTitle: <Logo />,
   headerStyle: {
     backgroundColor: '#f00',
   },
