@@ -20,7 +20,14 @@ const HomeScreen = ({ navigation }) => {
 }
 
 HomeScreen.navigationOptions = {
-  headerTitle: <Logo />,
+  headerTitle: () => <Logo />,
+  headerRight:()=> (
+    <Button
+      onPress={()=>alert('lalalala')}
+      title="soy lala"
+      color='#222'
+    />
+  ),
   headerStyle: {
     backgroundColor: '#f00',
   },
