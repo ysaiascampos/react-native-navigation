@@ -10,7 +10,7 @@ const HomeScreen = ({ navigation }) => {
       <Text>Open up App.js to start working on your app!</Text>
       <Button
         title="Ir a detalle"
-        onPress={()=> navigation.push('Detalle')}
+        onPress={()=> navigation.navigate('Detalle', { user_id: 2})}
       />
       <StatusBar style="auto" />
     </View>
@@ -18,9 +18,11 @@ const HomeScreen = ({ navigation }) => {
 }
 
 const DetalleScreen = ({ navigation }) => {
+  const lala = navigation.getParam('lala', 'valor por defecto');
+
   return (
     <View style={styles.container}>
-      <Text>Soy la pantalla de detalles</Text>
+      <Text>Soy la pantalla de detalles {lala}</Text>
       <Button
         title="volver"
         onPress={()=> navigation.goBack()}
