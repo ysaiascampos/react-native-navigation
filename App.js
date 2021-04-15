@@ -17,6 +17,10 @@ const HomeScreen = ({ navigation }) => {
   );
 }
 
+HomeScreen.navigationOptions = {
+  title: 'home'
+}
+
 const DetalleScreen = ({ navigation }) => {
   const lala = navigation.getParam('lala', 'valor por defecto');
 
@@ -25,11 +29,17 @@ const DetalleScreen = ({ navigation }) => {
       <Text>Soy la pantalla de detalles {lala}</Text>
       <Button
         title="volver"
-        onPress={()=> navigation.goBack()}
+        onPress={()=> navigation.setParams({title: 'Usuario 1'})}
       />
       <StatusBar style="auto" />
     </View>
   );
+}
+
+DetalleScreen.navigationOptions = ({navigation}) => {
+  return {
+    title: navigation.getParam('title', 'Cargando..')
+  }
 }
 
 const AppNavigator = createStackNavigator({
