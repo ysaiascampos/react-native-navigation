@@ -4,7 +4,8 @@ import { Ionicons } from '@expo/vector-icons';
 import { StyleSheet, Text, View, Button } from 'react-native';
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
-import { createBottomTabNavigator } from 'react-navigation-tabs';
+//import { createBottomTabNavigator } from 'react-navigation-tabs';
+import { createDrawerNavigator } from 'react-navigation-drawer';
 
 const Logo = () => <Text>LALALA</Text>;
 
@@ -14,7 +15,7 @@ const HomeScreen = ({ navigation }) => {
       <Text>Open up App.js to start working on your app!</Text>
       <Button
         title="Ir a detalle"
-        onPress={()=> navigation.navigate('Detalle', { user_id: 2})}
+        onPress={()=> navigation.openDrawer()}
       />
       <StatusBar style="auto" />
     </View>
@@ -22,8 +23,10 @@ const HomeScreen = ({ navigation }) => {
 }
 
 HomeScreen.navigationOptions = {
+  drawerIcon:({ tintColor }) => {
+    return <Ionicons name='ios-information-circle' size={25} color={tintColor} />
+  },
   headerTitle: () => <Logo />,
-  
   headerStyle: {
     backgroundColor: '#f00',
   },
@@ -63,7 +66,7 @@ DetalleScreen.navigationOptions = ({navigation}) => {
   }
 }
 
-const AppNavigator = createBottomTabNavigator({
+const AppNavigator = createDrawerNavigator({
   Home: {
     screen: HomeScreen
   },
@@ -72,28 +75,7 @@ const AppNavigator = createBottomTabNavigator({
   }
 }, { 
   initialRouteName: 'Home',
-  defaultNavigationOptions: ({ navigation }) => ({
-    tabBarIcon:({ focused, horizontal, tintColor}) => {
-      const { routeName } = navigation.state;
-      let iconName
-      if (routeName === "Home"){
-        iconName = `ios-information-circle${focused ? '' : '-outline'}`
-      } else {
-        iconName = `ios-options`
-      }
-      return <Ionicons name={iconName} size={20} tontColor={tintColor} />
-    },
-    tabBarOptions: {
-      activeTintColor: navigation.state.routeName === "Home" ? '#e91e63' : 'orange',
-      inactiveTintColor: 'black',
-      labelStyle: {
-        fontSize: 16,
-      },
-      style: {
-        backgroundColor: '#fec',
-      }
-    }
-  })
+  
 })
 
 const RootStack = createStackNavigator({
