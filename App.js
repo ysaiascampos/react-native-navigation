@@ -41,7 +41,7 @@ const DetalleScreen = ({ navigation }) => {
       <Text>Soy la pantalla de detalles {cont }</Text>
       <Button
         title="volver"
-        onPress={()=> navigation.setParams({title: 'Usuario 1'})}
+        onPress={()=> navigation.navigate("MiModal")}
       />
       <StatusBar style="auto" />
     </View>
@@ -84,7 +84,15 @@ const AppNavigator = createStackNavigator({
   }
 })
 
-export default createAppContainer(AppNavigator);
+const RootStack = createStackNavigator({
+  Main: AppNavigator,
+  MiModal: () => <Text>lololololo</Text>
+},{
+  mode: 'modal',
+  headerMode: 'none',
+})
+
+export default createAppContainer(RootStack);
 
 const styles = StyleSheet.create({
   container: {
