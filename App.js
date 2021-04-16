@@ -49,7 +49,7 @@ const DetalleScreen = ({ navigation }) => {
   );
 }
 
-DetalleScreen.navigationOptions = ({navigation, navigationOptions}) => {
+DetalleScreen.navigationOptions = ({navigation}) => {
   return {
     title: navigation.getParam('title', 'Cargando..'),
     headerRight:()=> (
@@ -59,9 +59,6 @@ DetalleScreen.navigationOptions = ({navigation, navigationOptions}) => {
         color='#555'
       />
     ),
-    headerStyle: {
-      backgroundColor: navigationOptions.headerStyle.backgroundColor,
-    },
   }
 }
 
@@ -75,12 +72,15 @@ const AppNavigator = createBottomTabNavigator({
 }, { 
   initialRouteName: 'Home',
   defaultNavigationOptions: {
-    headerStyle: {
-      backgroundColor: '#fec',
-    },
-    headerTintColor: '#555',
-    headerTitleStyle: {
-      fontWeight: '900',
+    tabBarOptions: {
+      activeTintColor:'#e91e63',
+      inactiveTintColor: 'black',
+      labelStyle: {
+        fontSize: 16,
+      },
+      style: {
+        backgroundColor: '#fec',
+      }
     }
   }
 })
