@@ -1,5 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { useEffect, useState } from 'react';
+import { Ionicons } from '@expo/vector-icons';
 import { StyleSheet, Text, View, Button } from 'react-native';
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
@@ -72,8 +73,18 @@ const AppNavigator = createBottomTabNavigator({
 }, { 
   initialRouteName: 'Home',
   defaultNavigationOptions: ({ navigation }) => ({
+    tabBarIcon:({ focused, horizontal, tintColor}) => {
+      const { routeName } = navigation.state;
+      let iconName
+      if (routeName === "Home"){
+        iconName = `ios-information-circle${focused ? '' : '-outline'}`
+      } else {
+        iconName = `ios-options`
+      }
+      return <Ionicons name={iconName} size={20} tontColor={tintColor} />
+    },
     tabBarOptions: {
-      activeTintColor: navigation.state.routeName == "Home" ? '#e91e63' : 'orange',
+      activeTintColor: navigation.state.routeName === "Home" ? '#e91e63' : 'orange',
       inactiveTintColor: 'black',
       labelStyle: {
         fontSize: 16,
