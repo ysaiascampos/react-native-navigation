@@ -71,9 +71,9 @@ const AppNavigator = createBottomTabNavigator({
   }
 }, { 
   initialRouteName: 'Home',
-  defaultNavigationOptions: {
+  defaultNavigationOptions: ({ navigation }) => ({
     tabBarOptions: {
-      activeTintColor:'#e91e63',
+      activeTintColor: navigation.state.routeName == "Home" ? '#e91e63' : 'orange',
       inactiveTintColor: 'black',
       labelStyle: {
         fontSize: 16,
@@ -82,7 +82,7 @@ const AppNavigator = createBottomTabNavigator({
         backgroundColor: '#fec',
       }
     }
-  }
+  })
 })
 
 const RootStack = createStackNavigator({
