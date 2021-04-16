@@ -2,7 +2,7 @@ import { StatusBar } from 'expo-status-bar';
 import React, { useEffect, useState } from 'react';
 import { Ionicons } from '@expo/vector-icons';
 import { StyleSheet, Text, View, Button } from 'react-native';
-import { createAppContainer } from 'react-navigation';
+import { createAppContainer, createSwitchNavigator } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 //import { createBottomTabNavigator } from 'react-navigation-tabs';
 import { createDrawerNavigator } from 'react-navigation-drawer';
@@ -15,7 +15,7 @@ const HomeScreen = ({ navigation }) => {
       <Text>Open up App.js to start working on your app!</Text>
       <Button
         title="Ir a detalle"
-        onPress={()=> navigation.openDrawer()}
+        onPress={()=> navigation.navigate('Detalle')}
       />
       <StatusBar style="auto" />
     </View>
@@ -66,7 +66,7 @@ DetalleScreen.navigationOptions = ({navigation}) => {
   }
 }
 
-const AppNavigator = createDrawerNavigator({
+const AppNavigator = createSwitchNavigator({
   Home: {
     screen: HomeScreen
   },
